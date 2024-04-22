@@ -1,0 +1,22 @@
+<nav class="navbar  navbar-expand-lg shadow" style="background-color: rgb(22, 144, 201)">
+    <div class="container-fluid">
+     
+        <div class="col-auto">
+
+          <a class="navbar-brand" style="color: azure;">Contacts</a>
+        </div>
+
+        
+        <div class="d-flex  ">
+            @if (valid) {
+              
+              <button class="btn btn-danger" (click)="logout()"> log out</button>
+            }@else{
+              
+              <app-modal-action name="login" color="btn btn-light mt-2" />
+            }
+        
+        </div>  
+  
+    </div>
+  </nav>
