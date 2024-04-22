@@ -1,0 +1,79 @@
+@if (name === "editar" ) {
+
+    <ng-template #content let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+            <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+        </div>
+        <div class="modal-body">
+           <app-form-contact typeform="edit" idContact={{idContact}} (valEvent)="take($event)"  />
+        </div>
+        <!-- <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+        </div> -->
+    </ng-template>
+    
+    <button class="btn {{color}}" (click)="open(content)"><i class="bi bi-pencil"></i></button>
+}@else if (name=== "crear"){
+    <ng-template #content let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Profile Create</h4>
+            <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+        </div>
+        <div class="modal-body">
+            <app-form-contact typeform="contact" (valEvent)="take($event)"  />
+        </div>
+        <!-- <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+        </div> -->
+    </ng-template>
+    <button class="btn {{color}}" (click)="open(content)"><i class="bi bi-person-plus-fill"></i></button>
+
+ }@else if (name === "eliminar") {
+    <ng-template #content let-modal>
+		<div class="modal-header">
+			<h4 class="modal-title" id="modal-title">Profile deletion</h4>
+			<button
+				type="button"
+				class="btn-close"
+				aria-describedby="modal-title"
+				(click)="modal.dismiss('Cross click')"
+			></button>
+		</div>
+		<div class="modal-body">
+			<p>
+				<strong>Are you sure you want to delete this<span class="text-primary">"contact"</span>? </strong>
+			</p>
+			<p>
+				All information associated to this contact will be permanently deleted.
+				<span class="text-danger">This operation can not be undone.</span>
+			</p>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
+			<button type="button" class="btn btn-danger" (click)="delete(idContact)">Ok</button> 
+		</div>
+    </ng-template>
+    
+    <button class="btn {{color}}" (click)="open(content)"><i class="bi bi-person-dash"></i></button>
+
+} @else if (name === 'login') {
+    <ng-template #content let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Login</h4>
+            <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+        </div>
+        <div class="modal-body">
+           <app-form-login/>
+        </div>
+        <!-- <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+        </div> -->
+    </ng-template>
+    <button class="btn {{color}}" (click)="open(content)">{{name}}</button>
+}
+
+
+
+
+<pre>{{ closeResult }}</pre>

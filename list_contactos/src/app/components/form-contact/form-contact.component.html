@@ -1,0 +1,85 @@
+@if (typeform === 'edit') {
+  <form  [formGroup]="contactsform" (ngSubmit)="updateContact()" >
+    <div class="mb-3">
+      <label for="" class="form-label">Name</label>
+      <input type="text" class="form-control" required id="name" formControlName="name"  >
+      @if (contactsform.get('name')?.invalid ) {
+        <div class="invalid-feedback">
+          Name is required
+        </div>
+
+      }
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">Phone number</label>
+      <input type="number" class="form-control" id="" formControlName="phonenum" required>
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">type contact</label>
+      <select class="form-select" formControlName="typecontactid" >
+        @for (item of contactType; track $index) {
+          <option value={{item.typecontactid}}  >{{item.type}}</option>
+        }
+      </select>  
+      <!-- <input type="number" class="form-control" id="" formControlName="typecontactid">   -->
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">comment</label>
+      <input type="text" class="form-control" id="" formControlName="comment">
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">info extra1</label>
+      <input type="text" class="form-control" id="" formControlName="infoextra1">
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">info extra2</label>
+      <input type="text" class="form-control" id="" formControlName="infoextra2">
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!contactsform.valid">Submit</button>
+  </form>
+
+}
+@else if (typeform=== 'contact') {
+
+    <form  [formGroup]="contactsform" (ngSubmit)="saveContact()">
+        <div class="mb-3">
+          <label for="" class="form-label">Name</label>
+          <input type="text" class="form-control" required id="name" formControlName="name" >
+    
+            <div class="alert alert-danger mt-2 " [hidden]="contactsform.value.name">
+              Name is required
+            </div>
+    
+          
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label">Phone number</label>
+          <input type="number" class="form-control" id="" formControlName="phonenum">
+          <div class="alert alert-danger mt-2 " [hidden]="contactsform.value.phonenum">
+            Please enter a valid phone number (10 digits).
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label">type contact</label>
+          <select class="form-select" formControlName="typecontactid" >
+            @for (item of contactType; track $index) {
+              <option value={{item.typecontactid}}  >{{item.type}}</option>
+            }
+          </select>  
+          <!-- <input type="number" class="form-control" id="" formControlName="typecontactid">   -->
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label">comment</label>
+          <input type="text" class="form-control" id="" formControlName="comment">
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label">info extra1</label>
+          <input type="text" class="form-control" id="" formControlName="infoextra1">
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label">info extra2</label>
+          <input type="text" class="form-control" id="" formControlName="infoextra2">
+        </div>
+        <button type="submit" class="btn btn-primary"  [disabled]="!contactsform.valid" >Submit</button>
+      </form>
+}
