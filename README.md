@@ -1,2 +1,2 @@
-## Indicaciones:
-- cambiar conectiondeaulft de la api, a la suya
+## Advice:
+- change conectiondeaulft from the api, to yours
